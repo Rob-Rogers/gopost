@@ -1,0 +1,4 @@
+{
+  "logData1": "[{\"event\": \"login\", \"user\": \"&lt;user1&gt;\"}, {\"event\": \"logout\", \"user\": \"&lt;user2&gt;\"}]",
+  "signature": "abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890"
+}
