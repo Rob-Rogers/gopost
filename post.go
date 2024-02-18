@@ -1,3 +1,19 @@
+/*
+ * cybersupervisor
+ * Copyright (C) 2024 Rob Rogers rob@ontariohighspeed.ca
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ *
+ */
+
+
+
 package main
 
 import (
