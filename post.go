@@ -25,6 +25,8 @@ type Config struct {
     HMACSecret string      `json:"hmacsecret"`
 }
 
+const MaxLogFileSize = 5 * 1024 * 1024 // 5 MB
+
 func LoadConfig() (Config, error) {
     var config Config
     paths := []string{"/etc/cybersupervisor/post.cfg", "post.cfg"}
@@ -105,6 +107,17 @@ func main() {
     }
 
     for _, source := range config.LogSources {
+        fileInfo, err := os.Stat(source.Path)
+        if err != nil {
+            log.Printf("Failed to get file info for %s: %v", source.Path, err)
+            continue
+        }
+
+        if fileInfo.Size() > MaxLogFileSize {
+            log.Printf("Log file %s exceeds the maximum size limit of %d bytes.", source.Path, MaxLogFileSize)
+            continue
+        }
+
         logData, err := ioutil.ReadFile(source.Path)
         if err != nil {
             log.Printf("Failed to read log file from %s: %v", source.Path, err)
@@ -123,4 +136,3 @@ func main() {
         }
     }
 }
-
