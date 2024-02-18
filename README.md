@@ -10,7 +10,7 @@ This Go program automates the process of posting JSON log data to a specified se
 - **Flexible Configuration**: Supports specifying multiple log files and custom post variables through a configuration file.
 
 ## Configuration
-The program reads its configuration from a file named `post.cfg` located either in the current directory or in `/etc/cybersupervisor/`. The configuration file should be in JSON format, specifying the server URL, the HMAC secret for signing the data, and the log files to process. It supports multiple log files.
+The program reads its configuration from a file named `post.cfg` located either in the current directory or in `/etc/cybersupervisor/`. The configuration file should be in JSON format, specifying the server URL, the HMAC secret for signing the data, and the log files to process. It supports multiple log files. Please ensure max file size defined does not exceed the size of your log files in program source.
 
 ### Example Configuration
 
@@ -19,10 +19,15 @@ The program reads its configuration from a file named `post.cfg` located either 
   "url": "https://example.com/post",
   "logSources": [
     {"path": "/path/to/log1.json", "postVar": "logData1"},
-    ...
+    {"path": "/path/to/log2.json", "postVar": "logData2"},
+    {"path": "/path/to/log3.json", "postVar": "logData3"},
+    {"path": "/path/to/log4.json", "postVar": "logData4"},
+    {"path": "/path/to/log5.json", "postVar": "logData5"},
+    {"path": "/path/to/log6.json", "postVar": "logData6"}
   ],
   "hmacsecret": "your_hmac_secret_here"
 }
+
 ```
 
 ## License
